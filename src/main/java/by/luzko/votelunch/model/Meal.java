@@ -1,6 +1,7 @@
 package by.luzko.votelunch.model;
 
 import java.time.LocalDate;
+import java.util.StringJoiner;
 
 public class Meal extends AbstractNamedEntity {
     private double price;
@@ -45,13 +46,12 @@ public class Meal extends AbstractNamedEntity {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Meal{");
-        sb.append(", id=").append(id);
-        sb.append(", name='").append(name);
-        sb.append("price=").append(price);
-        sb.append(", restaurant=").append(restaurant);
-        sb.append(", date=").append(date).append('\'');
-        sb.append('}');
-        return sb.toString();
+        return new StringJoiner(", ", Meal.class.getSimpleName() + "[", "]")
+                .add("price=" + price)
+                .add("date=" + date)
+                .add("restaurant=" + restaurant)
+                .add("name='" + name + "'")
+                .add("id=" + id)
+                .toString();
     }
 }

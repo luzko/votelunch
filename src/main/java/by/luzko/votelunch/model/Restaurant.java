@@ -1,5 +1,7 @@
 package by.luzko.votelunch.model;
 
+import java.util.StringJoiner;
+
 public class Restaurant extends AbstractNamedEntity {
     public Restaurant(Integer id, String name) {
         super(id, name);
@@ -7,10 +9,9 @@ public class Restaurant extends AbstractNamedEntity {
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Restaurant{");
-        sb.append("id=").append(id).append('\'');
-        sb.append(", name='").append(name);
-        sb.append('}');
-        return sb.toString();
+        return new StringJoiner(", ", Restaurant.class.getSimpleName() + "[", "]")
+                .add("name='" + name + "'")
+                .add("id=" + id)
+                .toString();
     }
 }

@@ -1,6 +1,7 @@
 package by.luzko.votelunch.model;
 
 import java.util.Set;
+import java.util.StringJoiner;
 
 public class User extends AbstractNamedEntity {
     private String email;
@@ -49,12 +50,13 @@ public class User extends AbstractNamedEntity {
 
     @Override
     public String toString() {
-        return "User (" +
-                "id=" + id +
-                ", email=" + email +
-                ", name=" + name +
-                ", enabled=" + enabled +
-                ", roles=" + roles +
-                ')';
+        return new StringJoiner(", ", User.class.getSimpleName() + "[", "]")
+                .add("email='" + email + "'")
+                .add("password='" + password + "'")
+                .add("enabled=" + enabled)
+                .add("roles=" + roles)
+                .add("name='" + name + "'")
+                .add("id=" + id)
+                .toString();
     }
 }
